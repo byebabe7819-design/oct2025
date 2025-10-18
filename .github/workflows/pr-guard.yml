@@ -1,4 +1,20 @@
 name: PR Guard
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  scan-placeholders:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan for placeholders
+        run: |
+          if git grep -nE "LEGACY PLACEHOLDER|@placeholder"; then
+            echo "❌ Placeholder marker(s) found. PR blocked"
+            exit 1
+          fi
+name: PR Guard
 
 on:
   pull_request:

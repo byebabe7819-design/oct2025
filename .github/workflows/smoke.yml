@@ -1,0 +1,18 @@
+name: Post-deploy Smoke
+
+on:
+  workflow_run:
+    workflows: ["CI & Firebase Deploy"]
+    types: [completed]
+
+jobs:
+  smoke:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping API
+        run: |
+          curl -sS https://verumdone.web.app/api/assistant | jq .
+      - name: Healthcheck
+        run: |
+          curl -sSf https://verumdone.web.app/api/assistant/ping | grep '"ok": true'
