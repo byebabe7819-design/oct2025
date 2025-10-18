@@ -1,0 +1,21 @@
+name: PR Guard
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  scan-placeholders:
+    name: Block placeholder markers
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Search for placeholder markers
+        run: |
+          if git grep -nE "LEGACY PLACEHOLDER|@placeholder"; then
+            echo "❌ Placeholder marker(s) found. Please remove before merge."
+            exit 1
+          else
+            echo "✅ No placeholder markers detected."
+          fi
