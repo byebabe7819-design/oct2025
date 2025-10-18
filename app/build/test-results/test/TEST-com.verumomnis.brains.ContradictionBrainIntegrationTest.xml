@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.verumomnis.brains.ContradictionBrainIntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-10-18T00:28:23.710Z" hostname="codespaces-c4ceb1" time="0.049">
+  <properties/>
+  <testcase name="dispatcher runs contradiction brain and returns expected findings()" classname="com.verumomnis.brains.ContradictionBrainIntegrationTest" time="0.049"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
