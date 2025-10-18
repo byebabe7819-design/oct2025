@@ -33,8 +33,16 @@ If you're unsure, open an issue first and include a short design note and the in
 
 ## Source of Truth (Kotlin)
 
-- Kotlin (`.kt`) files under `app/src/main/java/com/verumomnis/**` are canonical for brain implementations and dispatcher wiring.
-- Do **not** introduce duplicate Java and Kotlin versions of the same class.
-- If refactoring from Java → Kotlin, delete the Java class in the same PR and keep the package/class name unique in the module.
-- If a temporary no-op file is needed, mark it clearly and remove it before merge. We reject PRs containing placeholder no-op classes.
+
+## Local pre-commit hook (recommended)
+
+We provide a local pre-commit hook that blocks commits containing common placeholder markers such as `LEGACY PLACEHOLDER` or `@placeholder`.
+
+To enable it for your local clone, run:
+
+```
+git config core.hooksPath .githooks
+```
+
+The hook is located at `.githooks/pre-commit`.
 
